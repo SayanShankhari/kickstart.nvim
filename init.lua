@@ -1045,3 +1045,7 @@ vim.opt.shiftwidth = 4 -- Number of spaces used for each step of (auto)indent
 vim.opt.softtabstop = 4 -- Number of spaces a <Tab> counts for in insert mode
 vim.opt.expandtab = false -- Converts <Tab> input to spaces
 vim.opt.autoindent = true -- Copy indent from current line when starting a new line
+
+vim.opt.list = true
+-- This configuration displays tabs as "↹ " and trailing spaces as "."
+vim.opt.listchars = { tab = '↹ ', trail = '.' }
