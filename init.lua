@@ -1014,3 +1014,10 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+-- Set tab preferences
+vim.opt.tabstop = 4 -- Number of spaces a <Tab> counts for
+vim.opt.shiftwidth = 4 -- Number of spaces used for each step of (auto)indent
+vim.opt.softtabstop = 4 -- Number of spaces a <Tab> counts for in insert mode
+vim.opt.expandtab = false -- Converts <Tab> input to spaces
+vim.opt.autoindent = true -- Copy indent from current line when starting a new line
