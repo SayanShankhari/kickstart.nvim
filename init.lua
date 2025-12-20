@@ -1036,6 +1036,9 @@ require('lazy').setup({
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 
+vim.opt.relativenumber = true -- display
+vim.opt.fixeol = false -- no enforced extra End of Line character at the bottom of file
+
 -- Set tab preferences
 vim.opt.tabstop = 4 -- Number of spaces a <Tab> counts for
 vim.opt.shiftwidth = 4 -- Number of spaces used for each step of (auto)indent
