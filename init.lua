@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = true
+vim.g.have_nerd_font = false
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -671,17 +671,17 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
-        -- gopls = {},
-        -- pyright = {},
-        -- rust_analyzer = {},
+        clangd = {},
+        gopls = {},
+        pyright = {},
+        rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
+        ts_ls = {},
         --
 
         lua_ls = {
@@ -944,28 +944,7 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = {
-        'bash',
-        'c',
-        'cpp',
-        'java',
-        'javascript',
-        'rust',
-        'typescript',
-        'go',
-        'html',
-        'xml',
-        'json',
-        'diff',
-        'html',
-        'lua',
-        'luadoc',
-        'markdown',
-        'markdown_inline',
-        'query',
-        'vim',
-        'vimdoc',
-      },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -1005,7 +984,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
@@ -1035,17 +1014,3 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-
-vim.opt.relativenumber = true -- display
-vim.opt.fixeol = false -- no enforced extra End of Line character at the bottom of file
-
--- Set tab preferences
-vim.opt.tabstop = 4 -- Number of spaces a <Tab> counts for
-vim.opt.shiftwidth = 4 -- Number of spaces used for each step of (auto)indent
-vim.opt.softtabstop = 4 -- Number of spaces a <Tab> counts for in insert mode
-vim.opt.expandtab = false -- Converts <Tab> input to spaces
-vim.opt.autoindent = true -- Copy indent from current line when starting a new line
-
-vim.opt.list = true
--- This configuration displays tabs as "↹ " and trailing spaces as "."
-vim.opt.listchars = { tab = '↹ ', trail = '.' }
