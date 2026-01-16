@@ -1,6 +1,48 @@
 return {
+  --[[
+  'nvim-treesitter/nvim-treesitter',
+  build = ':TSUpdate',
+  main = 'nvim-treesitter.config', -- Sets main module to use for opts
+  opts = {
+    ensure_installed = {
+      'bash',
+      'c',
+      'diff',
+      'html',
+      'lua',
+      'luadoc',
+      'markdown',
+      'markdown_inline',
+      'query',
+      'vim',
+      'vimdoc',
+      -- Autoinstall languages that are not installed,
+      'cpp',
+      'go',
+      'java',
+      'javascript',
+      'typescript',
+      'rust',
+    },
+  },
+  config = function()
+    require('nvim-treesitter.config').setup { -- Note the 'config' here
+      auto_install = true,
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = { 'ruby' },
+      },
+      indent = {
+        enable = true,
+        disable = { 'ruby' },
+      },
+    }
+  end,
+]]
+
   -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
+  branch = 'master',
   build = ':TSUpdate',
   main = 'nvim-treesitter.configs', -- Sets main module to use for opts
   opts = {
