@@ -12,4 +12,6 @@ vim.opt.list = true
 -- This configuration displays tabs as "▸ " and trailing spaces as "."
 vim.opt.listchars = { tab = '↹ ', trail = '.' }
 
+vim.opt.shellcmdflag = '-ic' -- able to use aliased profile commands
+
 return {} -- empty table
