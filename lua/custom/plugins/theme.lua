@@ -58,13 +58,53 @@ vim.pack.add (
 -- 2.1. using runtime path to run locally
 -- attach directly to runtime path
 
+vim.opt.termguicolors = true
+
+local dev_plugins = {
+  {
+    name = "colorlib",
+    local_path = "COLORLIB_PATH",
+    remote_path = "https://github.com/SayanShankhari/colorlib",
+  },
+  {
+    name = "colordot",
+    local_path = "COLORDOT_PATH",
+    remote_path = "https://github.com/SayanShankhari/colordot.nvim",
+  },
+  {
+    name = "scotopia",
+    local_path = "SCOTOPIA_PATH",
+    remote_path = "https://github.com/SayanShankhari/scotopia.nvim",
+  },
+};
+
+for _, plugin in ipairs (dev_plugins) do
+  local plugin_path = os.getenv (plugin.local_path);
+
+  if plugin_path and vim.fn.isdirectory (plugin_path) == 1 then
+    vim.opt.rtp:prepend (plugin_path);
+  else
+    vim.pack.add ({
+      {
+        src = plugin.remote_path,
+        name = plugin.name,
+      }
+    });
+  end
+end
+
+--[[
 local colorlib_path = os.getenv ("COLORLIB_PATH");
 if not colorlib_path then error ("COLORLIB_PATH environment path variable not set", 2) end;
 local scotopia_path = os.getenv ("SCOTOPIA_PATH");
 if not scotopia_path then error ("SCOTOPIA_PATH environment path variable not set", 2) end;
 
+
 vim.opt.rtp:append (colorlib_path);
 vim.opt.rtp:append (scotopia_path);
+--]]
+
+--require ("colordot").setup();
 
 require ("scotopia").setup (
   -- config_options:
@@ -72,9 +112,14 @@ require ("scotopia").setup (
     styles = {
       comments = { italic = false }, -- Disable italics in comments
     }
-  }
+  },
   -- color_specs:
-  -- nil
+  {
+    ui = {
+      bg     = "#0F1115", -- Dark Steel/Abyss Canvas
+      bg_dim = "#14171E", -- Eerie Black Panel
+    },
+  }
 );
 
 -- `load` directly without any configuration
