@@ -29,9 +29,14 @@ require ("scotopia").setup (
     styles = {
       comments = { italic = false }, -- Disable italics in comments
     }
-  }
+  },
   -- color_specs:
-  -- nil
+  {
+    ui = {
+      bg     = "#0F1115", -- Dark Steel/Abyss Canvas
+      bg_dim = "#14171E", -- Eerie Black Panel
+    },
+  }
 );
 
 -- `load` directly without any configuration
